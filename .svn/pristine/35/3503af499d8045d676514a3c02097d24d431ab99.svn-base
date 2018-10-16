@@ -1,0 +1,17 @@
+<suite name="Suite_1.10" verbose="1" configfailurepolicy="continue">
+    <test name="card" preserve-order="true" configfailurepolicy="continue">
+    <packages>
+        <package name = "tests.LightBox.Card"></package>
+    </packages>
+</test>
+    <test name="Eco-cash" preserve-order="true" configfailurepolicy="continue">
+        <packages>
+            <package name = "tests.LightBox.Wallet.Eco_Cash"></package>
+        </packages>
+    </test>
+    <test name="m-pesa" preserve-order="true" configfailurepolicy="continue">
+        <packages>
+            <package name = "tests.LightBox.Wallet.M_Pesa"></package>
+        </packages>
+    </test>
+</suite>

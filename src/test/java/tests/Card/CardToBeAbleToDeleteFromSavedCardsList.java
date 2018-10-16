@@ -1,0 +1,89 @@
+package tests.Card;
+
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import framework.entity.PaymentCard;
+import framework.features.CartManagement;
+import framework.features.Login;
+import framework.features.PaymentManagement;
+import framework.util.common.Assertion;
+import framework.util.common.DataFactory;
+import framework.util.propertyManagement.MessageReader;
+import framework.util.reportManagement.ScreenShot;
+import org.testng.annotations.Test;
+import tests.TestInit;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by karthik.m on 6/10/2018.
+ */
+public class CardToBeAbleToDeleteFromSavedCardsList extends TestInit {
+
+    @Test
+    public void deleteCard() throws Exception {
+        ExtentTest t1 = pNode.createNode("DeleteSavedCard", "verifying:DeleteSavedCard");
+
+        PaymentCard crCard = DataFactory.getCreditCardFromAppData();
+        Login.init(t1)
+                .validLogin();
+
+        CartManagement.init(t1)
+                .addDefaultItemToCart();
+
+        PaymentManagement.init(t1)
+                .enterCardDetails(crCard, true);
+
+        Thread.sleep(3000);
+        List<String> win = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(win.get(0));
+        Thread.sleep(3000);
+
+        String actualMessage = driver.switchTo().alert().getText();
+
+        Assertion.verifyContains(actualMessage, MessageReader.getMessage("payment.success", null), "card payment successfully done through card in hosted page",t1, true);
+
+//        if(actualMessage.contains(MessageReader.getMessage("payment.success",null)))
+//            t1.pass("Payment successful");
+//        else
+//            t1.fail("payment unsuccessful");
+        driver.switchTo().alert().accept();
+
+        CartManagement.init(t1)
+                .addDefaultItemToCart();
+
+        CartManagement.init(t1)
+                .deleteCard();
+
+        Thread.sleep(3000);
+        String actualMessage1 = driver.switchTo().alert().getText();
+        driver.switchTo().alert().accept();
+
+        String actualMessage2 = driver.switchTo().alert().getText();
+        if(actualMessage2.contains(MessageReader.getMessage("card.deleted.success",null))){
+            t1.pass("card deleted successful");
+            t1.pass("", MediaEntityBuilder.createScreenCaptureFromPath(ScreenShot.TakeScreenshot()).build());
+        }
+
+        else{
+            t1.fail("card deleted unsuccessful");
+            t1.fail("", MediaEntityBuilder.createScreenCaptureFromPath(ScreenShot.TakeScreenshot()).build());
+        }
+        Thread.sleep(3000);
+        driver.switchTo().alert().accept();
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+}

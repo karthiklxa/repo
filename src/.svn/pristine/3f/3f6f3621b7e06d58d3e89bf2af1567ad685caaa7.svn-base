@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<suite name="Card-1.12" verbose="1" configfailurepolicy="continue">
+    <test name="card" preserve-order="true" configfailurepolicy="continue">
+        <!--<packages>-->
+        <!--<package name = "tests.Wallet.M_Pesa"></package>-->
+        <!--</packages>-->
+        <classes>
+            <class name="tests.Card.CardToBeAbleToDeleteFromSavedCardsList"/>
+            <class name="tests.Card.CustomerShouldBeAbleToEnterAllValuesInPaymentPage"/>
+            <class name="tests.Card.CustomerShouldGetErrorMessageWhenUserEntersWrongCredentials"/>
+            <class name="tests.Card.ForFutureTransactionSaveCardDetails"/>
+            <class name="tests.Card.PaymentSuccessfullyDone"/>
+            <class name="tests.Card.SystemShouldThrowProerErrorMsgWhenAnyOfTheFieldEmpty"/>
+            <!--<class name="tests.Card.ToVerifyCVVField"/>-->
+            <class name="tests.Card.ToVerifyStandardExpiryDateFormat"/>
+            <class name="tests.Card.VerifyCardSchemeLogoSpecificToTheCard"/>
+            <class name="tests.Card.ToVerifyTheCardPage"/>
+            <class name="tests.Card.ToVerifyAmtAndCurrInRequestParameterInCard"/>
+            <class name="tests.Card.ToVerifyAmtAndCurrInRequestParameterAndUI"/>
+            <class name="tests.Card.ToVerifyTheCurrencySymbolNearTransactionAmount"/>
+            <class name="tests.Card.ToVerifyTheHeaderContainsAmtAndCur"/>
+            <class name="tests.Card.ToVerifyAmtAndCurInPayBtn"/>
+            <class name="tests.Card.ToVerifyTheAmtAndCurByChangingTheURLValue"/>
+        </classes>
+    </test>
+</suite>

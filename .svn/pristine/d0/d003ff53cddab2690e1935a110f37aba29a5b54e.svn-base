@@ -1,0 +1,32 @@
+package tests.Card;
+
+import com.aventstack.extentreports.ExtentTest;
+import framework.entity.PaymentCard;
+import framework.features.CartManagement;
+import framework.features.Login;
+import framework.features.PaymentManagement;
+import framework.util.common.DataFactory;
+import org.testng.annotations.Test;
+import tests.TestInit;
+
+/**
+ * Created by karthik.m on 6/10/2018.
+ */
+public class CustomerShouldBeAbleToEnterAllValuesInPaymentPage extends TestInit
+{
+    @Test
+    public void checkingAllFeildsInPaymentPage() throws Exception
+    {
+        ExtentTest t1 = pNode.createNode("checkingAllFeildsInPaymentPage", "All The Fields In Payemnt Page");
+
+        PaymentCard crCard = DataFactory.getCreditCardFromAppData();
+        Login.init(t1)
+                .validLogin();
+
+        CartManagement.init(t1)
+                .addDefaultItemToCart();
+
+        PaymentManagement.init(t1)
+                .enterCardDetails(crCard, true);
+    }
+}

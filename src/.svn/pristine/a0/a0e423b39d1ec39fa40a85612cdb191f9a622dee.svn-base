@@ -1,0 +1,197 @@
+package framework.features;
+
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.Markup;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+import framework.entity.PaymentCard;
+import framework.entity.User;
+import framework.entity.Wallet;
+import framework.entity.WrongCardNumValidation;
+import framework.pageObjects.Card.PaymentInfo.PaymentInfo_pg1;
+import framework.pageObjects.LightBox.Card.CardInfo_pg;
+import framework.pageObjects.LightBox.Wallet.WalletInfo_pg;
+import framework.pageObjects.Wallet.PaymentInfo.WalletPaymentInfo_pg;
+import framework.util.common.Assertion;
+import framework.util.common.ConfigInput;
+import framework.util.common.DataFactory;
+import framework.util.dbManagement.GUIQueries;
+import framework.util.globalConstants.Wallets;
+import framework.util.propertyManagement.MessageReader;
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+import framework.pageObjects.LightBox.Common.Login_pg;
+
+import java.io.IOException;
+
+/**
+ * Created by karthik.m on 6/26/2018.
+ */
+public class LightBoxManagement
+{
+    private static ExtentTest pNode;
+    private static WebDriver driver;
+
+    public static LightBoxManagement init(ExtentTest t1) {
+        pNode = t1;
+        return new LightBoxManagement();
+    }
+
+    public void loginToLightBox() throws IOException
+    {
+        Markup m = MarkupHelper.createLabel("Login to lightbox :", ExtentColor.TEAL);
+        pNode.info(m);
+        User user = new User();
+        try {
+            Login_pg.init(pNode)
+                    .mobNum(ConfigInput.mobileNum)
+                    .email(ConfigInput.email)
+                    .creditOrDebitLink();
+            GUIQueries db = new GUIQueries();
+            String otp = db.getOTP(ConfigInput.mobileNum);
+            Login_pg.init(pNode)
+                    .otp(otp)
+                    .loginBtn1();
+
+
+        }catch (Exception e) {
+            Assertion.raiseExceptionAndStop(e, pNode);
+        }
+    }
+
+
+    public void enterCardDetails(PaymentCard card, boolean saveCard) throws IOException {
+        Markup m = MarkupHelper.createLabel("validCardDetails:", ExtentColor.TEAL);
+        pNode.info(m);
+        try {
+            CardInfo_pg.init(pNode)
+//                    .CardNumLable()
+                    .CardNum(card.cardNumber)
+                    .CardHolderName(card.userName)      //5459648900740060
+//                    .expMonth(02)
+//                    .expYear(card.expiryYear)
+                    .expDate("2424")
+                    .cvv(card.cvv)
+                    .saveCard(saveCard)
+                    .PayNowBtn();
+
+            Thread.sleep(2000);
+            String msg = CardInfo_pg.init(pNode)
+                    .successMsg();
+            Thread.sleep(2000);
+            System.out.println(msg);
+
+            if (ConfigInput.isAssert){
+                Assertion.verifyContains(msg, MessageReader.getMessage("payment.success.msg.card", null), "card payment successfully done through card in lightbox", pNode, true);
+                Thread.sleep(3000);
+                CardInfo_pg.init(pNode)
+                        .okBtn();
+            }
+
+        } catch (Exception e) {
+            Assertion.raiseExceptionAndStop(e, pNode);
+        }
+    }
+
+
+    public void enterInvalidCardNumber(WrongCardNumValidation card, boolean saveCard) throws IOException {
+        Markup m = MarkupHelper.createLabel("InvalidCardNumber:", ExtentColor.TEAL);
+        pNode.info(m);
+        try {
+            CardInfo_pg.init(pNode)
+                    .CardNum(card.cardNumber)
+                    .CardHolderName(card.userName)
+//                    .expMonth(05)
+//                    .expYear(card.expiryYear)
+                    .expDate("2424")
+                    .cvv(card.cvv)
+                    .saveCard(saveCard)
+                    .PayNowBtn();
+        } catch (Exception e) {
+            Assertion.raiseExceptionAndStop(e, pNode);
+        }
+    }
+
+
+
+
+
+    public void initiateWalletPayment(User user, Wallet wallet, String action ) throws Exception {
+        Markup m = MarkupHelper.createLabel("initiateWalletPayment:", ExtentColor.TEAL);
+        pNode.info(m);
+        WalletInfo_pg page = WalletInfo_pg.init(pNode);
+        try {
+            page.clickOnWallet()
+                    .selectWallet(wallet.autWalletCode)
+                    .clickOnPayNowBtn();
+            if (!wallet.isThirdParty) {
+
+                page
+                        .enterMobNumMP(user.msisdn)
+                        .clickOnGenerateID();
+            } else {
+                page
+                        .enterMobNumEC(user.msisdn)
+                        .clickOnSubmitBtn();
+            }
+
+            String refNum = null;
+            if (!wallet.isThirdParty) {
+                refNum = page.getReferenceNum();
+                if (refNum == null) {
+                    pNode.fail("Failed to get the rrn");
+                    Assert.fail("Failed to get the rrn");
+                }
+            } else if (wallet.autWalletCode.equalsIgnoreCase(Wallets.ECO_CASH)) {
+                // TODO - this is not the exact expected behaviour, only for tetsing purpose
+                refNum = "EC" + DataFactory.getRandomNumberAsString(9);
+            }
+            user.setReferenceNum(refNum);
+
+            if (ConfigInput.isAssert) {
+                Assertion.assertEqual("0000",ApiManagement.init(pNode).verifyWalletPayment(action,user.msisdn, refNum), "Payment is Initiated", pNode);
+                page.clickOnConfirmPaymentBtn();
+                Assertion.verifyActionMessageContain("payment.success.msg", "Verify wallet payment is successful " , pNode);
+
+            }
+        } catch (Exception e) {
+            Assertion.raiseExceptionAndContinue(e, pNode);
+        }
+    }
+
+    public void initiateWalletPayment1(User user, Wallet wallet) throws Exception {
+        Markup m = MarkupHelper.createLabel("initiateWalletPayment:", ExtentColor.TEAL);
+        pNode.info(m);
+        WalletInfo_pg page = WalletInfo_pg.init(pNode);
+        try {
+            page.clickOnWallet()
+                    .selectWallet(wallet.autWalletCode)
+                    .clickOnPayNowBtn();
+            if (!wallet.isThirdParty) {
+
+                page
+                        .enterMobNumMP(user.msisdn)
+                        .clickOnGenerateID();
+            } else {
+                page
+                        .enterMobNumEC(user.msisdn)
+                        .clickOnSubmitBtn();
+            }
+
+            String refNum = null;
+            if (!wallet.isThirdParty) {
+                refNum = page.getReferenceNum();
+                if (refNum == null) {
+                    pNode.fail("Failed to get the rrn");
+                    Assert.fail("Failed to get the rrn");
+                }
+            } else if (wallet.autWalletCode.equalsIgnoreCase(Wallets.ECO_CASH)) {
+                // TODO - this is not the exact expected behaviour, only for tetsing purpose
+                refNum = "EC" + DataFactory.getRandomNumberAsString(9);
+            }
+            user.setReferenceNum(refNum);
+        } catch (Exception e) {
+            Assertion.raiseExceptionAndContinue(e, pNode);
+        }
+    }
+}

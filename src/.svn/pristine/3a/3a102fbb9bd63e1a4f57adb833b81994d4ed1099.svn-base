@@ -1,0 +1,332 @@
+package framework.pageObjects.Portal.AdminPortalInfo;
+
+import com.aventstack.extentreports.ExtentTest;
+import framework.pageObjects.PageInit;
+import framework.util.common.ConfigInput;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+
+/**
+ * Created by karthik.m on 8/24/2018.
+ */
+public class SystemAdminCreation_pg extends PageInit {
+
+    @FindBy(xpath = "//b[contains(text(),'USER MANAGEMENT')]" )
+    private WebElement UserManagement;
+
+    @FindBy(id = "partyTypeId")
+    private WebElement UserType;
+
+    @FindBy(id = "hierarchy_criteria")
+    private WebElement BankName;
+
+    @FindBy(id = "partyNamePrefixId")
+    private WebElement NameSalvation;
+
+    @FindBy(id = "firstName")
+    private WebElement FirstName;
+
+    @FindBy(id = "lastName")
+    private WebElement LastName;
+
+    @FindBy(id = "msisdnUser")
+    private WebElement MSISDN;
+
+    @FindBy(id = "email")
+    private WebElement EmailID;
+
+    @FindBy(id = "msisdnWeb")
+    private WebElement LoginID;
+
+    @FindBy(id = "prefLanguage")
+    private WebElement PrefLang;
+
+    @FindBy(id = "SysRole55555")
+    private WebElement RoleRodioBtn;
+
+    @FindBy(id = "nextDiv")
+    private WebElement NextBtn;
+
+    @FindBy(xpath = "//b[contains(text(),'CONTROL PANEL')]")
+    private WebElement ControlPanel;
+
+    @FindBy(xpath = "//a[.='Group Role Management']")
+    private WebElement GroupRole;
+
+    @FindBy(id = "catCode")
+    private WebElement Category;
+
+    @FindBy(xpath = "//div[@class='common_container style_submit_form_button_container form_button_container style_primary form_primary form_button_medium']")
+    private WebElement NextBtn1;
+
+    @FindBy(id = "groupRoleCode")
+    private WebElement GroupRoleCode;
+
+    @FindBy(id = "groupRoleName")
+    private WebElement GroupRoleName;
+
+    @FindBy(id = "allCheck")
+    private WebElement SelectRoles;
+
+    @FindBy(id = "id_button_label_add")
+    private WebElement AddBtn;
+
+    @FindBy(xpath = "//span[contains(.,'group role has been added.')]")
+    private WebElement GroupRoleSuccessMSG;
+
+    @FindBy(xpath = "//span[contains(.,'User details for Mr. Sys Admin1 has been initialised and sent for approval.')]")
+    private WebElement SysAdminAddedMSG;
+
+    @FindBy(id = "id_tertiary_navigation_link_view_operator_user")
+    private WebElement ApproveUser;
+
+    @FindBy(name = "_partyTypeId")
+    private WebElement CategoryType;
+
+    @FindBy(name = "_msisdnWeb")
+    private WebElement LoginIDApproval;
+
+    @FindBy(xpath = "//td[.='Mr. Sys Admin1']/..//input")
+    private WebElement SelSysAdminRadio;
+
+    @FindBy(xpath = "//span[contains(.,'Operator User for Mr. Sys Admin1 has been approved Successfully')]")
+    private WebElement ApproveUserSuccessMsg;
+
+    @FindBy(xpath = "//a[contains(.,'Logout')]")
+    private WebElement LogoutLink;
+
+    @FindBy(name = "oldPassword")
+    private WebElement OldPwd;
+
+    @FindBy(name = "newPassword")
+    private WebElement NewPwd;
+
+    @FindBy(name = "confirmNewPassword")
+    private WebElement ConfirmPwd;
+
+    @FindBy(xpath = "//span[contains(.,'Password changed successfully .')]")
+    private WebElement PwdSuccessMsg;
+
+    @FindBy(xpath = "//a[contains(.,'Relogin')]")
+    private WebElement ReloginLink;
+
+
+    public SystemAdminCreation_pg(ExtentTest t1) {
+        super(t1);
+    }
+
+    public static SystemAdminCreation_pg init(ExtentTest t1) {
+        return new SystemAdminCreation_pg(t1);
+    }
+
+    public SystemAdminCreation_pg frame() throws InterruptedException {
+        Thread.sleep(2000);
+        driver.switchTo().frame(0);
+
+        return this;
+    }
+
+    public SystemAdminCreation_pg userManagement(){
+        clickOnElement(UserManagement,"User Management");
+        return this;
+    }
+
+    public SystemAdminCreation_pg userType(String sysAdmin) {
+        selectVisibleText(UserType, sysAdmin, "User Type");
+        return this;
+    }
+
+    public SystemAdminCreation_pg bankName(String bankName) throws InterruptedException {
+        Thread.sleep(2000);
+        selectVisibleText(BankName, bankName, "hierarchy criteria as bank name");
+        return this;
+    }
+
+    public SystemAdminCreation_pg nameSalvation(String salvation) {
+        selectVisibleText(NameSalvation, salvation, "Name Salvation");
+        return this;
+    }
+
+    public SystemAdminCreation_pg firstName(String fName) {
+        setText(FirstName, fName, "First Name");
+        return this;
+    }
+
+    public SystemAdminCreation_pg lastName(String lName) {
+        setText(LastName, lName, "Last Name");
+        return this;
+    }
+
+    public SystemAdminCreation_pg MSISDN(String num) {
+        setText(MSISDN, num, "MSISDN");
+        return this;
+    }
+
+    public SystemAdminCreation_pg emailID(String email) {
+        setText(EmailID, email, "Email ID");
+        return this;
+    }
+
+    public SystemAdminCreation_pg loginID(String ID) {
+        setText(LoginID, ID, "User Login-ID For System Admin");
+        return this;
+    }
+
+    public String sysID(){
+        return LoginID.getAttribute("value");
+    }
+
+    public SystemAdminCreation_pg preLang(String PLang) throws InterruptedException {
+        selectVisibleText(PrefLang, PLang, "Preferred Language");
+        return this;
+    }
+
+    public SystemAdminCreation_pg roleRadio(){
+        clickOnElement(RoleRodioBtn,"Role Radio Button");
+        return this;
+    }
+
+    public SystemAdminCreation_pg nextBtn() {
+        clickOnElement(NextBtn, "Next Button");
+        return this;
+    }
+
+    public SystemAdminCreation_pg controlPanel()
+    {
+        clickOnElement(ControlPanel,"Control Panel");
+        return this;
+    }
+
+    public SystemAdminCreation_pg groupRole() throws InterruptedException {
+        Thread.sleep(5000);
+        clickOnElement(GroupRole,"Group Role Management");
+        return this;
+    }
+
+    public SystemAdminCreation_pg category(String category){
+        selectVisibleText(Category,category,"Category");
+        return this;
+    }
+
+    public SystemAdminCreation_pg nextBtn1(){
+        clickOnElement(NextBtn1,"Next Button");
+        return this;
+    }
+
+    public SystemAdminCreation_pg confirmBtn(){
+        clickOnElement(NextBtn1,"Add & Confirm Button");
+        return this;
+    }
+
+    public SystemAdminCreation_pg groupRoleCode(String code){
+        setText(GroupRoleCode,code,"Group Role Code");
+        return this;
+    }
+
+    public SystemAdminCreation_pg groupRoleName(String name){
+        setText(GroupRoleName,name,"Group Role Name");
+        return this;
+    }
+
+    public SystemAdminCreation_pg selRoles(){
+        clickOnElement(SelectRoles,"Select All Roles");
+        return this;
+    }
+
+    public SystemAdminCreation_pg addBtn(){
+        clickOnElement(NextBtn1,"Add Button");
+        return this;
+    }
+
+    public String groupRoleSuccessMSG(){
+        return GroupRoleSuccessMSG.getText();
+    }
+
+    public SystemAdminCreation_pg moveTo(){
+        Actions act = new Actions(driver);
+        act.moveToElement(UserManagement).perform();
+        return this;
+    }
+
+    public String sysAdminAddedMSG(){
+        return SysAdminAddedMSG.getText();
+    }
+
+    public SystemAdminCreation_pg approveUser(){
+        clickOnElement(ApproveUser,"Approve User");
+        return this;
+    }
+
+    public SystemAdminCreation_pg categoryType(String type){
+        selectVisibleText(CategoryType,type,"Category Type");
+        return this;
+    }
+
+    public SystemAdminCreation_pg loginIDApproval(String ID){
+        setText(LoginIDApproval,ID,"Login-ID For Approval;");
+        return this;
+    }
+
+    public SystemAdminCreation_pg submitBtn(){
+        clickOnElement(NextBtn1,"Submit Button");
+        return this;
+    }
+
+    public SystemAdminCreation_pg selSysAdmin(){
+        clickOnElement(SelSysAdminRadio,"Select System Admin Radio Button");
+        return this;
+    }
+
+    public SystemAdminCreation_pg approve(){
+        clickOnElement(NextBtn1,"Approve Button");
+        return this;
+    }
+
+    public String approveMSG(){
+        return ApproveUserSuccessMsg.getText();
+    }
+
+    public SystemAdminCreation_pg logoutLink(){
+        clickOnElement(LogoutLink,"Logout Link");
+        return this;
+    }
+
+    public SystemAdminCreation_pg oldPwd(String oldPwd){
+        setText(OldPwd,oldPwd,"Old Password");
+        return this;
+    }
+
+    public SystemAdminCreation_pg newPwd(String newPwd){
+        setText(NewPwd,newPwd,"New Password");
+        return this;
+    }
+
+    public SystemAdminCreation_pg confirmPwd(String confirmPwd){
+        setText(ConfirmPwd,confirmPwd,"Confirm New Password");
+        return this;
+    }
+
+    public SystemAdminCreation_pg submitBtn1(){
+        clickOnElement(NextBtn1,"Submit Button For Password Change");
+        return this;
+    }
+
+    public String pwdConfirmMsg(){
+        return PwdSuccessMsg.getText();
+    }
+
+    public SystemAdminCreation_pg reloginLink(){
+        clickOnElement(ReloginLink,"Re-login Link");
+        return this;
+    }
+
+
+
+
+
+
+
+
+
+}

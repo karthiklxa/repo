@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.comviva.mfs:jacuzzi-common:1.0.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/com/comviva/mfs/jacuzzi-common/1.0.0-SNAPSHOT/jacuzzi-common-1.0.0-20170127.070427-9.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/com/comviva/mfs/jacuzzi-common/1.0.0-SNAPSHOT/jacuzzi-common-1.0.0-20170127.070427-9-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/com/comviva/mfs/jacuzzi-common/1.0.0-SNAPSHOT/jacuzzi-common-1.0.0-20170127.070427-9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

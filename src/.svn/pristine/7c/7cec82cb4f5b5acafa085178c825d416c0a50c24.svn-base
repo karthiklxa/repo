@@ -1,0 +1,51 @@
+package framework.util.common;
+
+import framework.util.propertyManagement.PayPlusProperties;
+
+/**
+ * Created by karthik.m on 6/4/2018.
+ */
+public class ConfigInput {
+    public static String URL,URL1,UserName,Password,CardNum,Name,CVV,CVV1,CVV2,CVV3,CVV4,ValidMobileNumber,
+            InValidMobileNumber, msisdnPrefix,BaseURI,BaseURIOracle,PostURL,ActiontypeAccept,email,mobileNum,
+            merchantURL,merchantUN,merchantPWD;
+
+    public static boolean isAssert = true;
+
+    public static void init() {
+        PayPlusProperties Me = PayPlusProperties.getInstance();
+        URL = Me.getProperty("web.url");
+        URL1 = Me.getProperty("web.url1");
+        UserName = Me.getProperty("demoUser");
+        Password = Me.getProperty("demoUserPwd");
+        msisdnPrefix = Me.getProperty("msisdn.prefix");
+        BaseURI=Me.getProperty("base.uri");
+        BaseURIOracle=Me.getProperty("base.uri.oracle");
+        PostURL=Me.getProperty("post.url");
+        ActiontypeAccept = Me.getProperty("wallet.actiontype");
+        email = Me.getProperty("demo.email");
+        mobileNum = Me.getProperty("demo.mobile.num");
+
+//        merchant portal details
+        merchantURL = Me.getProperty("web.url.merchant");
+        merchantUN = Me.getProperty("m.username");
+        merchantPWD = Me.getProperty("m.password");
+
+
+
+
+
+        // below is not required here
+//        CardNum = Me.getProperty("cardNumber");
+//        Name = Me.getProperty("name");
+//        CVV = Me.getProperty("cvv");
+//        CVV1=Me.getProperty("cvv.As1Digit");
+//        CVV2=Me.getProperty("cvv.As2Digit");
+//        CVV3=Me.getProperty("cvv.As3Digit");
+//        CVV4=Me.getProperty("cvv.As4Digit");
+//        ValidMobileNumber=Me.getProperty("valid.mobileNumber");
+//        InValidMobileNumber=Me.getProperty("Invalid.mobileNumber");
+
+    }
+
+}

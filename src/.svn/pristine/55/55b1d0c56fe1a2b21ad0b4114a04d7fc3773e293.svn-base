@@ -1,0 +1,30 @@
+# L a n g u a g e   a n d   S e t t i n g s
+money.locale.language       =   en
+web.language.code           =   en_US
+browser.name                =   chrome
+
+# A P P L I C A T I O N
+#web.url                     =   http://172.19.7.229:1035/CART/
+web.url                     =   http://172.19.7.229:7789/CART/
+web.url1                    =   http://172.19.7.229:1035/CART/jsps/home.jsp
+demoUser                    =   Demo
+demoUserPwd                 =   Com@123
+msisdn.prefix               =   9
+wallet.actiontype           =   ACCEPT
+
+# A P I    D E T A I L S
+#base.uri                    =   http://172.19.7.229:7001
+base.uri                    =   http://172.19.7.229:7867
+post.url                    =   walletPayment
+
+#D A T A   B A S E   C O N F I G U R A T I O N
+db.ip                       =   172.19.7.229
+db.port                     =   1521
+db.username                 =   MPOS
+db.password                 =   MPOS
+db.sid                      =   test
+
+#L I G H T B O X    L O G I N
+demo.email                  =   demo@mail.com
+demo.mobile.num             =   9876543210
+

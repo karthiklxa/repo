@@ -1,0 +1,84 @@
+package framework.pageObjects.Portal.AdminPortalInfo;
+
+import com.aventstack.extentreports.ExtentTest;
+import framework.pageObjects.PageInit;
+import framework.util.common.DateAndTime;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+/**
+ * Created by karthik.m on 8/23/2018.
+ */
+public class SuperAdminLogin_pg extends PageInit
+{
+    @FindBy(id = "loginId")
+    private WebElement SuperUN;
+
+    @FindBy(id = "password")
+    private WebElement SuperPwd;
+
+    @FindBy(id = "button_submit")
+    private WebElement SuperLoginBtn;
+
+    @FindBy(id = "otp")
+    private WebElement OTP;
+
+    @FindBy(id = "submit_otp")
+    private WebElement SubmitButton;
+
+
+
+
+    public SuperAdminLogin_pg(ExtentTest t1) {
+        super(t1);
+    }
+    public static SuperAdminLogin_pg init(ExtentTest t1){return new SuperAdminLogin_pg(t1);}
+
+
+    public SuperAdminLogin_pg frame() throws InterruptedException {
+        Thread.sleep(2000);
+        driver.switchTo().frame(0);
+        return this;
+    }
+
+
+    public SuperAdminLogin_pg superUn(String un) throws InterruptedException {
+        Thread.sleep(2000);
+        setText(SuperUN,un,"Super Admin Username");
+        return this;
+    }
+
+    public SuperAdminLogin_pg superPwd(String pwd){
+        setText(SuperPwd,pwd,"Super Admin Password");
+        return this;
+    }
+
+    public SuperAdminLogin_pg superLoginBtn(){
+        clickOnElement(SuperLoginBtn,"Super Admin Login Button");
+        return this;
+    }
+
+    public SuperAdminLogin_pg otp(String otp){
+        setText(OTP,otp,"OTP for super admin");
+        return this;
+    }
+
+    public boolean otpVisible(){
+        try{
+            return OTP.isDisplayed();
+        }catch (NoSuchElementException e){
+            return false;
+        }
+    }
+
+    public SuperAdminLogin_pg submitBtn(){
+        clickOnElement(SubmitButton,"submit button");
+        return this;
+    }
+
+
+
+
+
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<suite name="LightBox_Card-1.12" verbose="1" configfailurepolicy="continue">
+    <test name="Card" preserve-order="true" configfailurepolicy="continue">
+        <!--<packages>-->
+        <!--<package name = "tests.Wallet.M_Pesa"></package>-->
+        <!--</packages>-->
+        <classes>
+            <class name="tests.LightBox.Card.CardPaymentSuccessfullyDone_LB"/>
+            <class name="tests.LightBox.Card.CustomerShouldGetErrorMessageWhenUserEntersWrongCredentials_LB"/>
+            <class name="tests.LightBox.Card.ShouldGetErrorMSGWhenEnteringInvalidMobNum"/>
+            <class name="tests.LightBox.Card.ShouldGetErrorMSGWhenEnteringInvalidEmailID"/>
+            <class name="tests.LightBox.Card.ToVerifyAmountIsDisplayed"/>
+            <class name="tests.LightBox.Card.ToVerifyCardNumNotToBeMoreThat20Digits"/>
+            <class name="tests.LightBox.Card.ToVerifyCardNumShouldNotAllowAlphaNumeric"/>
+            <class name="tests.LightBox.Card.ToVerifyCardPaymentPage"/>
+            <class name="tests.LightBox.Card.ToVerifyCVVNumberShouldNotAllowAlphaNumeric"/>
+            <class name="tests.LightBox.Card.ToVerifyCVVNumShouldNotBeMoreThan4Digits"/>
+            <class name="tests.LightBox.Card.ToVerifyEmailAndMobNum"/>
+            <class name="tests.LightBox.Card.ToVerifyEmailIDAndMobNumIsMandatoryToProceedToPayment"/>
+            <class name="tests.LightBox.Card.ToVerifyErrorMSGWhenClickingLoginBtnWithEmptyFields"/>
+            <class name="tests.LightBox.Card.ToVerifyLightboxIsDisplayed"/>
+            <class name="tests.LightBox.Card.ToVerifyMerchantNameIsDisplayed"/>
+            <class name="tests.LightBox.Card.ToVerifyOTPPageIsDisplayed"/>
+            <class name="tests.LightBox.Card.ToVerifyProductIsDisplayed"/>
+            <class name="tests.LightBox.Card.ToVerifyStandardExpiryDateFormat_LB"/>
+            <class name="tests.LightBox.Card.ToVerifyIfCustomerHasNotSelectedRememberCardOptionTheCardShouldNotBeSaved"/>
+            <class name="tests.LightBox.Card.ToVerifyTheFieldsInCardPaymentPage"/>
+            <class name="tests.LightBox.Card.ToVerifyThePaymentOptionsInLB"/>
+            <class name="tests.LightBox.Card.ToVerifyWhenCustomerIsNotSelTheSavedCardAllFieldShouldBeEnabled"/>
+            <class name="tests.LightBox.Card.ToVerifyWhenEnteredValidOPTCardPageShouldBeDisplayed"/>
+            <class name="tests.LightBox.Card.ToVerifyWhenSelSavedCardsCardExpAndNameFieldShouldBeDisabled"/>
+            <class name="tests.LightBox.Card.ToVerifyAmtAndCurrInRequestParameterInLBCard"/>
+            <class name="tests.LightBox.Card.ToVerifyAmtAndCurrInRequestParameterAndUIInLB"/>
+            <class name="tests.LightBox.Card.ToVerifyTheCurrencySymbolNearTransactionAmountInLB"/>
+            <class name="tests.LightBox.Card.ToVerifyAmtAndCurInPayBtnInLB"/>
+            <class name="tests.LightBox.Card.ToVerifyTheAmtAndCurByChangingTheURLValueInLB"/>
+        </classes>
+    </test>
+</suite>

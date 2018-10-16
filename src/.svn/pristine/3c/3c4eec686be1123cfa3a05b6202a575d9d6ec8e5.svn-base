@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<suite name="Wallet_eco-cash_1.12" verbose="1" configfailurepolicy="continue">
+    <test name="Wallet" preserve-order="true" configfailurepolicy="continue">
+        <!--<packages>-->
+            <!--<package name = "tests.Wallet.M_Pesa"></package>-->
+        <!--</packages>-->
+        <classes>
+            <class name="tests.Wallet.Eco_Cash.PaymentFailedInEcoCash"/>
+            <class name="tests.Wallet.Eco_Cash.PaymentSuccessfullyDoneThroughEcoCash"/>
+            <class name="tests.Wallet.Eco_Cash.ShouldGetErrorMsgWhenEnteringInvalidMSISDNNUmberEC"/>
+            <class name="tests.Wallet.Eco_Cash.ShouldGetErrorMsgWhenNotEnteringAnyMSISDNNUmberEC"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyEcoCashAreDisplayed"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyPaymentOptionsAreDisplayed"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyPushMSGSentAfterSubmittingMSISDNNumber"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyResponseCodeWhenMSISDNNumberNotMatching"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyTransactionMSGBeforeClickingConfirmPaymentButtonEC"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyAmtAndCurrInRequestParameterInWallet"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyTheCurrencySymbolNearTransactionAmountInWallet"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyAmtAndCurrInRequestParameterAndUIInWallet"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyTheHeaderContainsAmtAndCurInWallet"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyAmtAndCurInPayBtnInWallet"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyTheAmtAndCurByChangingTheURLValueInWallet"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyTheWalletsOptionsLinkedWithTheirCurrencyCode"/>
+        </classes>
+    </test>
+</suite>

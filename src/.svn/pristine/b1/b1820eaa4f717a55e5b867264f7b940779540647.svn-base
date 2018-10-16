@@ -1,0 +1,53 @@
+package tests.Portal.AdminPortal;
+
+import com.aventstack.extentreports.ExtentTest;
+import framework.features.PortalManagement.AdminPortalManagement;
+import framework.util.common.ConfigInput;
+import framework.util.dbManagement.GUIQueries;
+import org.testng.annotations.Test;
+import tests.TestInit;
+
+import java.io.IOException;
+
+/**
+ * Created by karthik.m on 8/29/2018.
+ */
+public class CCECreation extends TestInit
+{
+    @Test
+    public void superLogin() throws IOException, InterruptedException {
+//        ExtentTest t1 = pNode.createNode("Login as Super Admin", "Logging in as super admin to create system admin: ");
+//        AdminPortalManagement.init(t1)
+//                .validLoginSuperAdmin();
+//        Thread.sleep(3000);
+////        AdminPortalManagement.init(t1)
+////                .creatingGroupRolesForSysAdmin();
+////        Thread.sleep(3000);
+//        AdminPortalManagement.init(t1)
+//                .systemAdminCreation();
+//        AdminPortalManagement.init(t1)
+//                .approveUser();
+//        AdminPortalManagement.init(t1)
+//                .SystemAdminPwdChange();
+//
+//        ExtentTest t2 = pNode.createNode("Login as System Admin", "Logging in as System admin to create CCE: ");
+//        AdminPortalManagement.init(t2)
+//                .validLoginSysAdmin();
+//        Thread.sleep(3000);
+////        AdminPortalManagement.init(t2)
+////                .creatingGroupRolesForCCE();
+//        AdminPortalManagement.init(t2)
+//                .cceCreation();
+//        AdminPortalManagement.init(t2)
+//                .approveCCEUser();
+//        AdminPortalManagement.init(t2)
+//                .CCEPwdChange();
+
+
+        GUIQueries db = new GUIQueries();
+        db.getActCodeForHID("qwerty");
+
+
+    }
+}
+

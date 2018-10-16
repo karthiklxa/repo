@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="17513" started-at="2018-10-05T13:05:59Z" finished-at="2018-10-05T13:06:16Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="17513" started-at="2018-10-05T13:05:59Z" finished-at="2018-10-05T13:06:16Z">
+      <class name="tests.Wallet.Eco_Cash.PaymentFailedInEcoCash">
+        <test-method status="PASS" signature="beforeSuite(org.testng.ITestContext)[pri:0, instance:tests.Wallet.Eco_Cash.PaymentFailedInEcoCash@fcd6521]" name="beforeSuite" is-config="true" duration-ms="1652" started-at="2018-10-05T18:35:57Z" finished-at="2018-10-05T18:35:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@561b7d53]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="beforeClassRun()[pri:0, instance:tests.Wallet.Eco_Cash.PaymentFailedInEcoCash@fcd6521]" name="beforeClassRun" is-config="true" duration-ms="4339" started-at="2018-10-05T18:35:59Z" finished-at="2018-10-05T18:36:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClassRun -->
+        <test-method status="PASS" signature="beforMethodRun(java.lang.reflect.Method)[pri:0, instance:tests.Wallet.Eco_Cash.PaymentFailedInEcoCash@fcd6521]" name="beforMethodRun" is-config="true" duration-ms="3" started-at="2018-10-05T18:36:03Z" finished-at="2018-10-05T18:36:03Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void tests.Wallet.Eco_Cash.PaymentFailedInEcoCash.paymentFailure() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforMethodRun -->
+        <test-method status="PASS" signature="paymentFailure()[pri:0, instance:tests.Wallet.Eco_Cash.PaymentFailedInEcoCash@fcd6521]" name="paymentFailure" duration-ms="11614" started-at="2018-10-05T18:36:03Z" finished-at="2018-10-05T18:36:15Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- paymentFailure -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:tests.Wallet.Eco_Cash.PaymentFailedInEcoCash@fcd6521]" name="afterMethod" is-config="true" duration-ms="148" started-at="2018-10-05T18:36:15Z" finished-at="2018-10-05T18:36:15Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=paymentFailure status=SUCCESS method=PaymentFailedInEcoCash.paymentFailure()[pri:0, instance:tests.Wallet.Eco_Cash.PaymentFailedInEcoCash@fcd6521] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="afterClassRun()[pri:0, instance:tests.Wallet.Eco_Cash.PaymentFailedInEcoCash@fcd6521]" name="afterClassRun" is-config="true" duration-ms="1380" started-at="2018-10-05T18:36:15Z" finished-at="2018-10-05T18:36:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClassRun -->
+        <test-method status="PASS" signature="afterSuiteRun()[pri:0, instance:tests.Wallet.Eco_Cash.PaymentFailedInEcoCash@fcd6521]" name="afterSuiteRun" is-config="true" duration-ms="0" started-at="2018-10-05T18:36:16Z" finished-at="2018-10-05T18:36:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuiteRun -->
+      </class> <!-- tests.Wallet.Eco_Cash.PaymentFailedInEcoCash -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

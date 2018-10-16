@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<suite name="Lightbox_Wallet_eco-cash_1.10" verbose="1" configfailurepolicy="continue">
+    <test name="Wallet_1_1" preserve-order="true" configfailurepolicy="continue">
+        <classes>
+            <class name="tests.LightBox.Wallet.Eco_Cash.PaymentFailedInEcoCash_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.PaymentSuccessfullyDoneThroughEcoCash_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ShouldGetErrorMsgWhenEnteringInvalidMSISDNNUmberEC_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ShouldGetErrorMsgWhenNotEnteringAnyMSISDNNUmberEC"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyEcoCashAreDisplayed_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyMSISDNFieldIsDisplayed"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyPushMSGSentAfterSubmittingMSISDNNumber_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyResponseCodeWhenMSISDNNumberNotMatching_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyTransactionMSGBeforeClickingConfirmPaymentButtonEC_LB"/>
+        </classes>
+    </test>
+</suite>

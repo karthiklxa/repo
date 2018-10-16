@@ -1,0 +1,23 @@
+card.number.cannot.have.special.char=message from application
+payment.success                         =   SUCCESS
+card.deleted.success                    =   Card Deleted Successfully
+last.four.digit.of.saved.card           =   5454
+error.msg.for.emepty.fields              =   Some of the required fields are missing or are incorrect.
+transaction.msg.mp                      =    1. Enter the reference ID displayed above in your M-Pesa mobile phone app
+transaction.msg.ec                      =    1. Approve the transaction through the push message received 
+
+
+# W A L L E T    M E S S A G E S
+payment.success.msg                     =   Payment Successful
+payment.failure.msg                     =   Payment Failed
+payment.refund.msg                      =   Please Check With Money Provider for Refund
+
+#L I G H T B O X    M E S S A G E S
+payment.success.msg.card                =   TRANSACTION SUCCESSFUL
+error.msg.for.invalid.mobnum            =   Please enter a valid mobile number
+error.msg.for.invalid.email             =   Please enter a valid email.Eg:you@example.com
+card.page.validation                    =   PAYMENT METHOD - CREDIT/DEBIT
+error.msg.for.empty.fields.LB           =   Some of the required fields are missing or are incorrect.
+
+
+

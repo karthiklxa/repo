@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<suite name="Wallet_eco-cash_1.10" verbose="1" configfailurepolicy="continue">
+    <test name="Wallet_1_1" preserve-order="true" configfailurepolicy="continue">
+        <!--<packages>-->
+            <!--<package name = "tests.Wallet.M_Pesa"></package>-->
+        <!--</packages>-->
+        <classes>
+            <class name="tests.Wallet.Eco_Cash.PaymentFailedInEcoCash"/>
+            <class name="tests.Wallet.Eco_Cash.PaymentSuccessfullyDoneThroughEcoCash"/>
+            <class name="tests.Wallet.Eco_Cash.ShouldGetErrorMsgWhenEnteringInvalidMSISDNNUmberEC"/>
+            <class name="tests.Wallet.Eco_Cash.ShouldGetErrorMsgWhenNotEnteringAnyMSISDNNUmberEC"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyEcoCashAreDisplayed"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyPaymentOptionsAreDisplayed"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyPushMSGSentAfterSubmittingMSISDNNumber"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyResponseCodeWhenMSISDNNumberNotMatching"/>
+            <class name="tests.Wallet.Eco_Cash.ToVerifyTransactionMSGBeforeClickingConfirmPaymentButtonEC"/>
+        </classes>
+    </test>
+</suite>

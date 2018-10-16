@@ -1,0 +1,62 @@
+package tests.LightBox.Wallet.M_Pesa;
+
+import com.aventstack.extentreports.ExtentTest;
+import framework.entity.User;
+import framework.entity.Wallet;
+import framework.features.ApiManagement;
+import framework.features.CartManagement;
+import framework.features.LightBoxManagement;
+import framework.features.Login;
+import framework.pageObjects.LightBox.Wallet.WalletInfo_pg;
+import framework.pageObjects.Wallet.PaymentInfo.WalletPaymentInfo_pg;
+import framework.util.common.Assertion;
+import framework.util.common.ConfigInput;
+import framework.util.common.NegativedData;
+import framework.util.propertyManagement.MessageReader;
+import org.testng.annotations.Test;
+import tests.TestInit;
+
+/**
+ * Created by karthik.m on 6/22/2018.
+ */
+public class ToVerifyTheRefundMSGWhenInvalidMobNumGiven_LB extends TestInit
+{
+    @Test
+    public void toVerifyTheRefundMSG() throws Exception {
+        ExtentTest t1 = pNode.createNode("PAYPLUS-672-LB-wallet-MPesa-07", "To Verify The Refund MSG When User Gives Invalid Ref-ID");
+
+        User newUser = new User();
+
+        Login.init(t1)
+                .validLogin();
+
+        CartManagement.init(t1)
+                .addDefaultItemToCart1();
+
+//        LightBoxManagement.init(t1)
+//                .loginToLightBox();
+
+//        Thread.sleep(4000);
+        WalletInfo_pg.init(t1)
+                .clickOnWallet()
+                .clickOnMpesaRadiobtn()
+                .clickOnPayNowBtn()
+                .enterMobNumMP(newUser.msisdn)
+                .clickOnGenerateID();
+
+        String refNum = WalletInfo_pg.init(t1)
+                .getReferenceNum();
+
+
+
+        startNegativeTest(t1);
+        if (ConfigInput.isAssert) {
+            Assertion.assertEqual("0006", ApiManagement.init(t1).verifyWalletPayment(ConfigInput.ActiontypeAccept,NegativedData.InvalidMobNum,refNum), "Payment is Initiated", t1);
+            WalletInfo_pg.init(t1).clickOnConfirmPaymentBtn();
+            Assertion.verifyActionMessageContain("payment.refund.msg", "Verify wallet payment is refunded when user gives wrong reference-ID for user:" + newUser.loginId, t1);
+//            String msg = WalletInfo_pg.init(t1)
+//                    .refundMsg();
+//            Assertion.verifyContains(msg, MessageReader.getMessage("payment.refund.msg",null),"Verify wallet payment is refunded when user gives wrong reference-ID for user:" + newUser.loginId,t1,true);
+        }
+    }
+}

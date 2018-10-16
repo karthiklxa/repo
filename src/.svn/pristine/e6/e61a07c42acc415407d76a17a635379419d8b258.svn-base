@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<suite name="Lightbox_Wallet_eco-cash_1.12" verbose="1" configfailurepolicy="continue">
+    <test name="Wallet" preserve-order="true" configfailurepolicy="continue">
+        <classes>
+            <class name="tests.LightBox.Wallet.Eco_Cash.PaymentFailedInEcoCash_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.PaymentSuccessfullyDoneThroughEcoCash_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ShouldGetErrorMsgWhenEnteringInvalidMSISDNNUmberEC_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ShouldGetErrorMsgWhenNotEnteringAnyMSISDNNUmberEC"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyEcoCashAreDisplayed_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyMSISDNFieldIsDisplayed"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyPushMSGSentAfterSubmittingMSISDNNumber_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyResponseCodeWhenMSISDNNumberNotMatching_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyTransactionMSGBeforeClickingConfirmPaymentButtonEC_LB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyAmtAndCurrInRequestParameterInLBWallet"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyTheHeaderContainsAmtAndCurInLBWallet"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyTheWalletsOptionsLinkedWithTheirCurrencyCodeLB"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyTheAmtAndCurByChangingTheURLValueInLBWallet"/>
+            <class name="tests.LightBox.Wallet.Eco_Cash.ToVerifyAmtAndCurInPayBtnInLBWallet"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,67 @@
+package tests.LightBox.Card;
+
+import com.aventstack.extentreports.ExtentTest;
+import framework.entity.WrongCardNumValidation;
+import framework.features.CartManagement;
+import framework.features.LightBoxManagement;
+import framework.features.Login;
+import framework.features.PaymentManagement;
+import framework.pageObjects.LightBox.Card.CardInfo_pg;
+import framework.util.common.Assertion;
+import framework.util.common.DataFactory;
+import framework.util.propertyManagement.MessageReader;
+import org.testng.annotations.Test;
+import tests.TestInit;
+
+/**
+ * Created by karthik.m on 6/10/2018.
+ */
+public class CustomerShouldGetErrorMessageWhenUserEntersWrongCredentials_LB extends TestInit {
+    @Test
+    public void InvalidCardNumValidation() throws Exception
+    {
+        ExtentTest t1 = pNode.createNode("InvalidCardNumber", "InvalidCardNumber");
+
+        WrongCardNumValidation card = DataFactory.getCreditCardFromAppData1();
+        Login.init(t1)
+                .validLogin();
+
+        CartManagement.init(t1)
+                .addDefaultItemToCart1();
+
+        LightBoxManagement.init(t1)
+                .loginToLightBox();
+//        LightBoxManagement.init(t1)
+//                .enterInvalidCardNumber(crCard, true);
+
+        CardInfo_pg.init(t1)
+                .CardNum(card.cardNumber)
+                .CardHolderName(card.userName);
+        String cardMsg = CardInfo_pg.init(t1)
+                .errorMsgInvalidCard();
+        Thread.sleep(2000);
+        Assertion.verifyContains(cardMsg, MessageReader.getMessage("error.msg.for.invalid.card",null),"verify",t1);
+//        Thread.sleep(2000);
+//        CardInfo_pg.init(t1)
+//                .okBtn();
+        Thread.sleep(2000);
+        CardInfo_pg.init(t1)
+                .expDate("1111")
+                .cvv(card.cvv);
+        String expMsg = CardInfo_pg.init(t1)
+                .errorMsgInvalidExpDate();
+        Thread.sleep(2000);
+        Assertion.verifyContains(expMsg, MessageReader.getMessage("error.msg.for.invalid.exp.date",null),"verify",t1);
+        CardInfo_pg.init(t1)
+                .okBtn();
+        Thread.sleep(2000);
+
+        CardInfo_pg.init(t1).PayNowBtn();
+        Thread.sleep(2000);
+        String msg = CardInfo_pg.init(t1)
+                .errorMsg().getText();
+        Thread.sleep(2000);
+
+        Assertion.verifyContains(msg, MessageReader.getMessage("error.msg.for.empty.fields.LB",null),"verify",t1);
+    }
+}

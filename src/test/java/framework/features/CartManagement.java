@@ -1,0 +1,100 @@
+package framework.features;
+
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.Markup;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+import framework.pageObjects.Common.AddToCart.AddToCart_pg1;
+import framework.util.common.Assertion;
+import framework.util.common.ConfigInput;
+
+import java.io.IOException;
+
+/**
+ * Created by karthik.m on 6/6/2018.
+ */
+public class CartManagement
+{
+    private static ExtentTest pNode;
+
+    public static CartManagement init(ExtentTest t1)
+    {
+        pNode = t1;
+        return new CartManagement();
+    }
+
+    public void addDefaultItemToCart() throws IOException
+    {
+        try {
+
+            AddToCart_pg1.init(pNode)
+//                    .selDefaultItem()
+//                    .addToCart()
+                    .cartBtn()
+                    .proceedPayment()
+                    .payment()
+                    .navigateToPaymentPage(1);
+        } catch (Exception e) {
+            Assertion.raiseExceptionAndContinue(e, pNode);
+        }
+    }
+
+
+    public void addDefaultItemToCart1() throws IOException
+    {
+        Markup m = MarkupHelper.createLabel("AddToCart", ExtentColor.TEAL);
+        pNode.info(m);
+
+        try {
+
+            AddToCart_pg1.init(pNode)
+//                    .selDefaultItem()
+//                    .addToCart()
+                    .cartBtn()
+                    .proceedPayment()
+                    .payment()
+                    .frame();
+        } catch (Exception e) {
+            Assertion.raiseExceptionAndContinue(e, pNode);
+        }
+    }
+
+
+    public void addDefaultItemToCart2() throws IOException
+    {
+        Markup m = MarkupHelper.createLabel("AddToCart", ExtentColor.TEAL);
+        pNode.info(m);
+
+        try {
+
+            AddToCart_pg1.init(pNode)
+//                    .selDefaultItem()
+//                    .addToCart()
+                    .cartBtn()
+                    .proceedPayment()
+                    .payment();
+//                    .frame();
+        } catch (Exception e) {
+            Assertion.raiseExceptionAndContinue(e, pNode);
+        }
+    }
+
+
+    public void deleteCard() throws Exception
+    {
+        try
+        {
+            AddToCart_pg1.init(pNode)
+                    .SelCard()
+                    .clickDeleteLink();
+
+        }
+        catch (Exception e)
+        {
+            Assertion.raiseExceptionAndContinue(e, pNode);
+        }
+        }
+
+
+    }
+

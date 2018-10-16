@@ -1,0 +1,158 @@
+package framework.pageObjects.Card.PaymentInfo;
+
+import com.aventstack.extentreports.ExtentTest;
+import framework.pageObjects.PageInit;
+import framework.util.common.GenericMethods;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+
+/**
+ * Created by karthik.m on 6/8/2018.
+ */
+public class PaymentInfo_pg1 extends PageInit {
+    private static GenericMethods gM;
+
+    @FindBy(id = "cardNumberCredit")
+    private WebElement CardNumber;
+
+    @FindBy(id = "cardNameCredit")
+    private WebElement CardHolderName;
+
+    @FindBy(id = "mmCredit")
+    private WebElement ExpMonth;
+
+    @FindBy(id = "yyCredit")
+    private WebElement ExpYear;
+
+    @FindBy(id = "cvvCredit")
+    private WebElement Cvv;
+
+    @FindBy(id = "addCardCheck")
+    private WebElement SaveCard;
+
+    @FindBy(xpath = "//a[contains(text(),'Pay')]")
+    private WebElement PayNowBtn;
+
+    @FindBy(id = "cardTokens")
+    private WebElement SavedCardsList;
+
+    @FindBy(xpath = "//div[contains(text(),'missing or are incorrect')]")
+    private WebElement ErrorMsg;
+
+    @FindBy(xpath = "//a[@data-img='images/cvv2.jpg']")
+    private WebElement CardCvvImage;
+
+    @FindBy(xpath = "//a[contains(text(),'Credit/Debit Card')]")
+    private WebElement CreditOrDebit;
+
+
+    public PaymentInfo_pg1(ExtentTest t1) {
+        super(t1);
+    }
+    public static PaymentInfo_pg1 init(ExtentTest t1){return new PaymentInfo_pg1(t1);}
+
+
+    public PaymentInfo_pg1 CardNum(String cardNum){
+        setText(CardNumber,cardNum,"Card_Number");
+        return this;
+    }
+
+    public boolean verifyCardNum(){
+        return CardNumber.isEnabled();
+    }
+
+    public PaymentInfo_pg1 CardHolderName(String holderName){
+        setText(CardHolderName,holderName,"Holder_Name");
+        return this;
+    }
+
+    public boolean verifyCardName(){
+        return CardHolderName.isEnabled();
+    }
+
+    public PaymentInfo_pg1 expMonth(String month){
+        selectVisibleText(ExpMonth,month,"EXPIRY_Month");
+        return this;
+    }
+
+    public boolean verifyExpMonth(){
+        return ExpMonth.isEnabled();
+    }
+
+    public PaymentInfo_pg1 expYear(String year){
+        selectVisibleText(ExpYear,year,"EXPIRY_Year");
+        return this;
+    }
+
+    public boolean verifyExpYear(){
+        return ExpYear.isEnabled();
+    }
+
+    public PaymentInfo_pg1 cvv(String cvv){
+        setText(Cvv,cvv,"CVV_Number");
+        return this;
+    }
+
+    public boolean verifyCVV(){
+        return Cvv.isEnabled();
+    }
+
+    public PaymentInfo_pg1 saveCard(boolean saveCard){
+        if(saveCard){
+            clickOnElement(SaveCard,"Save_Card_Checkbox");
+        }
+        return this;
+    }
+
+    public boolean verifySavedCard(){
+        return SaveCard.isEnabled();
+    }
+
+    public PaymentInfo_pg1 PayNowBtn()
+    {
+        clickOnElement(PayNowBtn,"Pay_Now_Button");
+        return this;
+    }
+
+    public WebElement savedCardList() throws InterruptedException {
+//        return gM.getOptions(SavedCardsList);
+        Select sel = new Select(SavedCardsList);
+        sel.selectByIndex(1);
+        WebElement allList = sel.getFirstSelectedOption();
+        return allList;
+//        return gM.getOptionText(SavedCardsList);
+    }
+
+    public WebElement errorMsg(){
+        return ErrorMsg;
+    }
+
+    public WebElement verifyMonth(){
+        Select sel = new Select(ExpMonth);
+        sel.selectByIndex(0);
+        WebElement mm = sel.getFirstSelectedOption();
+        return mm;
+    }
+
+    public WebElement verifyYear(){
+        Select sel = new Select(ExpYear);
+        sel.selectByIndex(0);
+        WebElement yyyy = sel.getFirstSelectedOption();
+        return yyyy;
+    }
+
+    public boolean cardCvvImage(){
+        boolean image = CardCvvImage.isDisplayed();
+        return image;
+    }
+    public PaymentInfo_pg1 cvvImage(){
+        clickOnElement(CardCvvImage,"CVV image");
+        return this;
+    }
+
+    public boolean creditOrDebit(){
+        return CreditOrDebit.isDisplayed();
+    }
+}

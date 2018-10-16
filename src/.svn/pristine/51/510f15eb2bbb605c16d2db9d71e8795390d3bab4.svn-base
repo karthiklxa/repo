@@ -1,0 +1,269 @@
+package framework.pageObjects.LightBox.Card;
+
+import com.aventstack.extentreports.ExtentTest;
+import framework.pageObjects.PageInit;
+import framework.util.common.GenericMethods;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by karthik.m on 6/26/2018.
+ */
+public class CardInfo_pg extends PageInit
+{
+    private static GenericMethods gM;
+
+    @FindBy(id = "elem-card")
+    private WebElement CardNumLabel;
+
+    @FindBy(id = "cardNumberCredit")
+    private WebElement CardNumber;
+
+    @FindBy(xpath = "//div[@class='elem elem-name invalid mature']")
+    private WebElement CardNameLabel;
+
+    @FindBy(id = "cardNameCredit")
+    private WebElement CardHolderName;
+
+    @FindBy(xpath = "//div[@class='elem elem-expiry invalid']")
+    private WebElement ExpDateLabel;
+
+    @FindBy(id = "cardExpiry")
+    private WebElement ExpDate;
+
+//    @FindBy(id = "mmCredit")
+//    private WebElement ExpMonth;
+//
+//    @FindBy(id = "yyCredit")
+//    private WebElement ExpYear;
+
+    @FindBy(xpath = "//div[@class='elem elem-cvv invalid mature']")
+    private WebElement CVVLabel;
+
+    @FindBy(id = "cvvCredit")
+    private WebElement Cvv;
+
+    @FindBy(id = "addCardCheck")
+    private WebElement SaveCard;
+
+    @FindBy(id = "Pay")
+    private WebElement PayNowBtn;
+
+    @FindBy(id = "txnRefresh")
+    private  WebElement OKBtn;
+
+    @FindBy(xpath = "//strong[contains(text(),'TRANSACTION SUCCESSFUL')]")
+    private WebElement SuccessMsg;
+
+//    @FindBy(xpath = "//strong[.='PAYMENT METHOD - CREDIT/DEBIT']")
+//    private WebElement CardPage;
+
+    @FindBy(xpath = "//div[contains(text(),'missing or are incorrect')]")
+    private WebElement ErrorMsg;
+
+    @FindBy(id = "cardTokens")
+    private WebElement SelCard;
+
+    @FindBy(xpath = "//select[@id='cardTokens']//option")
+    private List<WebElement> Sel;
+
+
+
+    public CardInfo_pg(ExtentTest t1) {
+        super(t1);
+    }
+
+    public static CardInfo_pg init(ExtentTest t1){return new CardInfo_pg(t1);}
+
+//    public CardInfo_pg CardNumLable(){
+//        clickOnElement(CardNumLabel,"Card Number Label");
+//        CardNumLabel.click();
+//        return this;
+//    }
+
+    public CardInfo_pg CardNum(String cardNum){
+        clickOnElement(CardNumLabel,"Card Number Label");
+        setText(CardNumber,cardNum,"Card_Number");
+        return this;
+    }
+    public boolean verifyCardNum(){
+        clickOnElement(CardNumLabel,"Card Number Label");
+        return CardNumber.isDisplayed();
+    }
+    public boolean CardNumEnabled(){
+        clickOnElement(CardNumLabel,"Card Number Label");
+        return CardNumber.isEnabled();
+    }
+    public boolean CardNumEnabled1(){
+        return CardNumber.isEnabled();
+    }
+
+    public CardInfo_pg CardHolderName(String holderName){
+        clickOnElement(CardNameLabel,"Card Name Lable");
+        setText(CardHolderName,holderName,"Holder_Name");
+        return this;
+    }
+    public boolean verifyCardName(){
+        clickOnElement(CardNameLabel,"Card Name Lable");
+        return CardHolderName.isDisplayed();
+    }
+    public boolean CardNameEnable(){
+        clickOnElement(CardNameLabel,"Card Name Lable");
+        return CardHolderName.isEnabled();
+    }
+    public boolean CardNameEnable1(){
+        return CardHolderName.isEnabled();
+    }
+
+
+
+//    public CardInfo_pg expMonth(int month){
+//        selectIndex(ExpMonth,month,"EXPIRY_Month");
+//        return this;
+//    }
+
+    public CardInfo_pg expDate(String date){
+        clickOnElement(ExpDateLabel,"Expiry Date Label");
+        setText(ExpDate,date,"Expiry Date");
+        return this;
+    }
+    public boolean verifyDate(){
+        clickOnElement(ExpDateLabel,"Expiry Date Label");
+        return ExpDate.isDisplayed();
+    }
+    public boolean ExpDate(){
+        clickOnElement(ExpDateLabel,"Expiry Date Label");
+        return ExpDate.isEnabled();
+    }
+    public boolean ExpDate1(){
+        return ExpDate.isEnabled();
+    }
+
+    public String verifyDateFormat(){
+        clickOnElement(ExpDateLabel,"Expiry Date Label");
+        return ExpDate.getAttribute("placeholder");
+    }
+
+//    public WebElement verifyMonthFormat(){
+//        Select sel = new Select(ExpDate);
+//        sel.selectByIndex(0);
+//        WebElement mm = sel.getFirstSelectedOption();
+//        return mm;
+//    }
+
+//    public CardInfo_pg expYear(String year){
+//        selectVisibleText(ExpYear,year,"EXPIRY_Year");
+//        return this;
+//    }
+//    public boolean verifyYear(){
+//        return ExpYear.isDisplayed();
+//    }
+//    public boolean YearEnabled(){
+//        return ExpYear.isEnabled();
+//    }
+//
+//    public WebElement verifyYearFormat(){
+//        Select sel = new Select(ExpDate);
+//        sel.selectByIndex(0);
+//        WebElement yyyy = sel.getFirstSelectedOption();
+//        return yyyy;
+//    }
+
+    public CardInfo_pg cvv(String cvv){
+        clickOnElement(CVVLabel,"CVV Label");
+        setText(Cvv,cvv,"CVV_Number");
+        return this;
+    }
+    public boolean verifyCVV(){
+        clickOnElement(CVVLabel,"CVV Label");
+        return Cvv.isDisplayed();
+    }
+    public boolean CVVEnabled(){
+        clickOnElement(CVVLabel,"CVV Label");
+        return Cvv.isEnabled();
+    }
+
+
+    public CardInfo_pg saveCard(boolean saveCard){
+        if(saveCard){
+            clickOnElement(SaveCard,"Save_Card_Checkbox");
+        }
+        return this;
+    }
+    public boolean verifySavedCards(){
+        return SaveCard.isDisplayed();
+    }
+
+    public CardInfo_pg PayNowBtn()
+    {
+        clickOnElement(PayNowBtn,"Pay_Now_Button");
+        return this;
+    }
+
+    public CardInfo_pg okBtn(){
+        clickOnElement(OKBtn,"OK Button");
+        return this;
+    }
+
+    public String successMsg(){
+        return SuccessMsg.getText();
+    }
+
+//    public String cardPage(){
+//        return CardPage.getText();
+//    }
+
+    public WebElement errorMsg(){
+        return ErrorMsg;
+    }
+
+    public CardInfo_pg SelCard(){
+        selectIndex(SelCard,1,"Select_Saved_Card");
+        return this;
+    }
+
+    public CardInfo_pg selByPartialText(String text) {
+//        List<WebElement> optionElements = driver.findElement(By.id("cardTokens")).findElements(By.tagName("option"));
+        for (WebElement optionElement : Sel) {
+            String ele = optionElement.getText();
+            System.out.println(ele);
+            if (ele.contains(text)) {
+                String optionValue = optionElement.getAttribute("value");
+                selectValue(SelCard, optionValue, ele);
+                break;
+            }
+        }
+        return this;
+    }
+
+    public ArrayList<String> listOfDropDown() {
+        Select sel = new Select(SelCard);
+        List<WebElement> list = sel.getOptions();
+        ArrayList<String> allText = new ArrayList<String>();
+        for (WebElement allEle : list) {
+            String text = allEle.getText();
+            allText.add(text);
+        }
+        return allText;
+    }
+
+    public String getOptionByPartialText(String text) {
+        String optionValue = "";
+        for (WebElement optionElement : Sel) {
+            String ele = optionElement.getText();
+            if (ele.contains(text)) {
+                optionValue=ele;
+                break;
+            }
+        }
+        return optionValue;
+    }
+
+
+
+
+}
